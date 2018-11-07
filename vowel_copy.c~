@@ -1,0 +1,101 @@
+# include <stdio.h>
+# include <stdlib.h>
+# include <string.h>
+
+# define MAXCHAR 1000
+
+void writeToFile(char c[1024], char filename[1024]);
+void read_words (FILE *f);
+
+
+int main(void){
+  /*
+
+Assignment 3 - Due Tuesday November 6, 2018.
+
+Write a C program that takes a text file as an input file (this could be your 
+Keyboard input)
+
+and processes the input file as follows: 
+
+1. For ever first and last character of a word of lenght >1 
+	change to upper case if it is lower case or the other way around
+
+2. Copy words that begin with a vowel and paste them in a new file
+
+*/
+  FILE *fp;
+  char str[MAXCHAR], c;
+  char *filename;
+ 
+  // file entry
+  printf("Please enter the location of a text file without quotes.\n");
+  scanf("%s", filename);
+  fp = fopen(filename, "r");
+  
+  // catch null file
+  if (fp == NULL){
+    printf("\nCan not open file: %s. Check file path and permissions.", filename);
+    return 1;
+  }
+
+  read_words(fp);
+
+  // close file stream
+  fclose(fp);
+  return 0;
+}
+
+void writeToFile(char c[1024], char filename[]){
+  FILE * fo;
+  int i;
+  
+   // open new text file
+   fo = fopen(filename, "a+");
+
+   fprintf(fo, "%s ", c);
+  
+   fclose(fo);
+}
+
+void read_words (FILE *f) {
+    char x[1024];
+    /* assumes no word exceeds length of 1023 */
+    while (fscanf(f, " %1023s", x) == 1) {
+      
+       puts(x);
+       // get x length for end of word
+       int x_length = strlen(x);
+
+       if (x_length > 1){
+	 // check if first letter is uppercase. If yes, lowercase first  
+	 if (x[0] > 64 && x[0] < 91){
+	   x[0] = x[0] + 32;
+	   writeToFile(x, "new_output.txt");
+	 }
+
+	 // check if first letter is lowercase and word length > 1. If yes, lowercase first  
+	 if (x[0] > 96 && x[0] < 123){
+	   x[0] = x[0] - 32;
+	   writeToFile(x, "new_output.txt");
+	 }
+       
+	 // check if last letter is uppercase. If yes, lowercase last
+	 if (x[x_length] > 64 && x[x_length] < 91){
+	   x[x_length] = x[x_length] - 32;
+	   writeToFile(x, "new_output.txt");
+	 }
+
+	 // check if last letter is lowercase and word length > 1. If yes, uppercase last
+	 if (x[x_length] > 96 && x[x_length] < 123){
+	   x[x_length] = x[x_length] - 32;
+	   writeToFile(x, "new_output.txt");
+	 }
+       }
+
+       // check if word starts with a vowel. If so, write to new file
+	if (x[0] == 97 || x[0] == 101 || x[0] == 105 || x[0] == 111 || x[0] == 117){
+	  writeToFile(x, "vowel_starters.txt");
+	}
+    }
+}

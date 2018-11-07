@@ -1,0 +1,39 @@
+                                             ___                                            
+                                            (   )                                           
+ ___  ___    .--.    ___  ___  ___   .--.    | |      .--.      .--.      .-..    ___  ___  
+(   )(   )  /    \  (   )(   )(   ) /    \   | |     /    \    /    \    /    \  (   )(   ) 
+ | |  | |  |  .-. ;  | |  | |  | | |  .-. ;  | |    |  .-. ;  |  .-. ;  ' .-,  ;  | |  | |  
+ | |  | |  | |  | |  | |  | |  | | |  | | |  | |    |  |(___) | |  | |  | |  . |  | |  | |  
+ | |  | |  | |  | |  | |  | |  | | |  |/  |  | |    |  |      | |  | |  | |  | |  | '  | |  
+ | |  | |  | |  | |  | |  | |  | | |  ' _.'  | |    |  | ___  | |  | |  | |  | |  '  `-' |  
+ ' '  ; '  | '  | |  | |  ; '  | | |  .'.-.  | |    |  '(   ) | '  | |  | |  ' |   `.__. |  
+  \ `' /   '  `-' /  ' `-'   `-' ' '  `-' /  | |    '  `-' |  '  `-' /  | `-'  '   ___ | |  
+   '_.'     `.__.'    '.__.'.__.'   `.__.'  (___)    `.__,'    `.__.'   | \__.'   (   )' |  
+                                                                        | |        ; `-' '  
+                                                                       (___)        .__.'   
+
+---------------------------------------------------------------------------------------------------------------------------
+
+This program does the following: 
+
+Takes a text file as input and processes it as follows: 
+
+1.
+	For words with length >1, if the first letter is uppercase, it becomes lowercase. 
+	Similarly, if the first character is lowercase, it becomes uppercase.
+	The same effect is performed on the last character of each word. 
+	The changed words are written to a new txt file called new_output.txt
+
+2. 
+	All words that begin with a vowel (of any size) are written into a file called vowel_starters.txt. 
+	The vowels have not been formatted in our vowel_starters.txt, but they have been in new_output.txt
+
+----------------------------------------------------------------------------------------------------------------------------
+
+
+Contained in this ZIP are the following: 
+	- vowel_copy.c			// commented code
+	- vcc				// out file
+	- lipsum.txt			// sample lorem ipsum text
+	- test4vowels.txt		// test to make sure vowels are working. Our vowel_starters.txt should == test4vowels.txt
+
